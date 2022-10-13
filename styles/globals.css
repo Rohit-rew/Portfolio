@@ -416,19 +416,21 @@ nav {
   height: 450px;
   overflow: hidden;
   border: 1px solid red;
+  padding-bottom: 20px;
+ 
 }
 
 .pinboardcontainer{
   height: 100%;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
+  
 }
 
 .pinboard{
-  width: 340px ;
-  /* width: 25vw; */
+  /* width: 340px ; */
+  width: 25vw;
   height: 320px;
   background-color: white;
   border-radius: 12px;
@@ -488,7 +490,7 @@ nav {
   background-color: #996ae5;
 }
 
-@media only screen and (max-width:900px){
+/* @media only screen and (max-width:900px){
 
   .displaypins{
     height: 500px;
@@ -523,7 +525,7 @@ nav {
     border-radius: 12px 0px 0px 12px;
   }
 
-}
+} */
 
 @media only screen and (max-width:400px) {
   .displaypins{
