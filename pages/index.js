@@ -15,6 +15,8 @@ import Testimonials from "../component/homecomponents/testimonials";
 import Faq from "../component/homecomponents/faq";
 
 export default function App() {
+
+
   return (
     <main className="home">
       <Slider />
@@ -36,3 +38,25 @@ export default function App() {
     </main>
   );
 }
+
+// import client from "../lib/apoloclient"
+// import {gql} from "@apollo/client"
+
+// export async function getStaticProps() {
+//   const { data } = await client.query({
+//     query: gql`
+//     {
+//       books(limit:5){
+//         name
+//       }
+//     }
+//     `,
+//   });
+
+//   return {
+//     props: {
+//       data: data
+//     },
+//  };
+// }
+
