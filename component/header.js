@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import react from "react";
 import { Hamcontext } from "../context";
 export default function Header() {
@@ -9,11 +10,17 @@ const data = react.useContext(Hamcontext)
         data.hamOn()
     }
 
+    const router = useRouter()
+
+    function gohome(){
+      router.push('/')
+    }
+
   return (
 
     <header>
       <nav>
-        <div className="logo">LoGo</div>
+        <div onClick={gohome} className="logo">LoGo</div>
 
         <div className="items">
           <Link href={"/"}>

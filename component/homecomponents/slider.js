@@ -5,21 +5,34 @@ export default function Slider() {
   return (
     <div className="slider">
       <div className="slidercontainer">
-        <p>FULL STACK CUSTOM WEBSITE DEVELOPER</p>
-        <h1>
+        <motion.p
+        animate={{opacity : 1}}
+        transition={{duration : 1}}
+        initial={{opacity : 0}}
+        >FULL STACK CUSTOM WEBSITE DEVELOPER</motion.p>
+
+
+        <motion.h1
+        animate={{opacity : 1}}
+        transition={{duration : 1}}
+        initial={{opacity : 0}}
+        >
           Impactful branding and high-end <br />
           Custom websites for creatives
-        </h1>
-        <button>Lets start a project together</button>
+        </motion.h1>
+        <motion.button
+        animate={{ opacity : 1}}
+        transition={{duration:1}}
+        initial={{ opacity : 0}}
+        >Lets start a project together</motion.button>
       </div>
 
       <div className="movingbanners">
 
         <motion.div 
-        animate={{x :-700}} 
-        transition={{duration : 20 , repeat : Infinity , ease:"linear" ,delay:1.5 }}
-        initial={{x : 0}}
-
+        animate={{x :-700 , opacity:.5}} 
+        transition={{duration : 20 , repeat : Infinity , ease:"linear" ,delay:1.5 , opacity:{duration : 1 , delay : 0} } }
+        initial={{x : 0 , opacity : 0}}
         className="bannercontainer">
           <img src="/banner icons/1.png" alt="tech-icons" />
           <img

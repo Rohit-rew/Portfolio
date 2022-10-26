@@ -2,6 +2,8 @@ import React from "react";
 import { Hamcontext } from "../context";
 import { motion  , AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 
 
@@ -9,9 +11,25 @@ import { faCircleArrowRight  } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Hamburger() {
-  const data = React.useContext(Hamcontext);
-  console.log(data);
 
+  const data = React.useContext(Hamcontext);
+  const Router = useRouter()
+
+  function gohome(){
+    Router.push('/')
+    data.hamOn()
+  }
+  
+  function goBlogs(){
+    Router.push('/blogs')
+    data.hamOn()
+  }
+  
+  function goProjects(){
+    Router.push('/projects')
+    data.hamOn()
+  }
+  
   return (
     <>
     <AnimatePresence >
@@ -31,11 +49,12 @@ export default function Hamburger() {
             />
 
             <motion.div 
+            onClick={gohome}
             key={1}
             animate={{x:0 , opacity:1}}
             transition={{duration:1 , delay:.6}}
             initial={{x : "-270" , opacity : 0}}
-
+            
             className="hamitem">Home 
             <FontAwesomeIcon icon={faCircleArrowRight} style={{fontSize : '2rem'}} />
             </motion.div>
@@ -47,13 +66,15 @@ export default function Hamburger() {
             />
 
             <motion.div 
+            onClick={goBlogs}
             key={2}
             animate={{x:0 , opacity : 1}}
             transition={{duration:1 , delay:.8}}
             initial={{x : -270, opacity : 0}}
-
+            
             className="hamitem">Blogs <FontAwesomeIcon icon={faCircleArrowRight} style={{fontSize : '2rem'}} />
             </motion.div>
+
             <motion.hr 
             animate={{x:0 , opacity:1}}
             transition={{duration:1 , delay:.8}}
@@ -61,14 +82,16 @@ export default function Hamburger() {
             />
 
             <motion.div 
+            onClick={goProjects}
             key={3}
             animate={{x:0 , opacity:1}}
             transition={{duration:1, delay:1}}
             initial={{x : -270 , opacity:0}}
             exit={{x : "-270" , opacity : 0  }}
-
+            
             className="hamitem">Projects <FontAwesomeIcon icon={faCircleArrowRight} style={{fontSize : '2rem'}} />
             </motion.div>
+
             <motion.hr 
             animate={{x:0 , opacity:1}}
             transition={{duration:1 , delay:1}}
