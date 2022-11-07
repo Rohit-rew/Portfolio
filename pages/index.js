@@ -1,5 +1,5 @@
 // home page
-import React from "react";
+import React, { Suspense } from "react";
 import Slider from "../component/homecomponents/slider";
 import Displaypinboard from "../component/homecomponents/displaypinboard";
 import Textshowcase from "../component/homecomponents/textshowcase";
@@ -14,13 +14,16 @@ import Hireme from "../component/homecomponents/hireme";
 import Testimonials from "../component/homecomponents/testimonials";
 import Faq from "../component/homecomponents/faq";
 
-export default function App() {
+export default function App(props) {
 
 
   return (
     <main className="home">
       <Slider />
-      <Displaypinboard />
+
+      <Suspense fallback={<h1>Loading...</h1>}>
+      <Displaypinboard images={props.images} />
+      </Suspense>
 
       <div className="mobile-reverse">
         <Textshowcase />

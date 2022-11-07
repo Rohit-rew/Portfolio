@@ -3,33 +3,41 @@ import React from "react"
 
 export default React.memo(function Textshowcase() {
 
-  const {scrollY} = useScroll()
+  const ref = React.useRef(null)
+
+  const {scrollY ,scrollYProgress} = useScroll({
+    target : ref,
+    offset: ["start end", "end center"]
+  })
   const [scroll , setscroll] = React.useState()
+  const [scrollprogress , setscrollprogress] = React.useState('')
+
 
   React.useEffect(()=>{
-    
+    console.log(scrollprogress)
+    setscrollprogress(scrollYProgress.current)
+
     scrollY.onChange((val)=>{
-      
-      setscroll((preval)=>{
-        if(preval>70)return
-        return val>600? Number(val)-600 : 0
-      })
+      setscroll(val)
     })
 
-  },[scrollY])
+  },[scroll])
 
 
   return (
     <div className="textshowcase">
 
-        <div className="text-container">
+        <div className="text-container" ref={ref}>
           <motion.div 
-          style={{width : `${scroll/1.5}vh` }}
+          style={{width : `${scrollprogress*300}px` }}
           className="strike-through"></motion.div>
             <h1 className="striked">You need a developer</h1>
 
             <motion.h1
+            style={{opacity : `${scrollprogress}`}}
             >You need a high performing developer</motion.h1>
+
+
             <p className="p1">A Good developer can change the face of your company. A Good developer can change.</p>
 
             <p>A Good developer can change the face of your company .A Good developer can change the face of your company <span>A Good developer can change the face of your company</span>can change the face of your company can change the face of your company can change the face of your company. </p>

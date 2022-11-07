@@ -1,30 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
-import {motion , useScroll} from "framer-motion"
+import {motion , useScroll , useInView} from "framer-motion"
 import React, { useState } from "react"
 
 
-export default React.memo(function Squarecards() {
+export default function Squarecards() {
   const [scroll , setscroll] = useState('')
-  const {scrollY} = useScroll()
-  // console.log(scroll/5)
+  const [scrollprogress , setscrollprogress] = React.useState('')
+  const ref = React.useRef(null)
+  const {scrollY,scrollYProgress} = useScroll({
+    target : ref,
+    offset: ["start end", "end end"]
+  })
+
 
   React.useEffect(()=>{
-
-    scrollY.onChange((val)=>{
-      // console.log(val)
-      setscroll(()=>{
-
-        return val>2900 ? 2900 : val<2400 ? 2400 : val
-      })
+    setscrollprogress(scrollYProgress.current)
+    scrollY.onChange(val=>{
+      setscroll(val)
     })
-    
-  },[scrollY])
-    
+
+  },[scroll])
+
 
 
   return (
-    <div className="squarecards">
+    <div className="squarecards" >
 
         <div className="textarea">
             <p className="minitext">DEVELOPMENT</p>
@@ -34,27 +35,28 @@ export default React.memo(function Squarecards() {
 
         <div className="cardarea">
 
-            <img className="cardmainimage" src="/squarecards/1.png" />
+            <img  
+            ref={ref}
+            className="cardmainimage" src="/squarecards/1.png" />
+
             <motion.img 
-            style={{right : `${scroll/5 > 400 ?  50+Number((scroll/5)-600) : '50' }px`}}
+            style={{right : `${Number(-100) + Number((scrollprogress*100))}px` }}
             className="absolute abs1" src="/squarecards/2.png" />
 
-
             <motion.img 
-            style={{right : `${scroll/5 > 400 ?  600-Number((scroll/5)-400) : '500' }px`}}
+            style={{left : `${Number(-100) + Number((scrollprogress*100))}px` }}
             className="absolute abs2" src="/squarecards/3.png" />
 
             <motion.img 
-            style={{right : `${scroll/5 > 400 ?  50+Number((scroll/5)-600) : '50' }px`}}
+            style={{right : `${Number(-100) + Number((scrollprogress*100))}px` }}
             className="absolute abs3" src="/squarecards/4.png" />
 
-
             <motion.img 
-            style={{right : `${scroll/5 > 400 ?  600-Number((scroll/5)-400) : '500' }px`}}
+            style={{left : `${Number(-100) + Number((scrollprogress*100))}px` }}
             className="absolute abs4" src="/squarecards/5.png" />
 
         </div>
 
     </div>
   )
-})
+}

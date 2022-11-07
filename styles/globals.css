@@ -510,11 +510,12 @@ nav {
 }
 
 .strike-through{
-  /* width: 320px; */
+  /* width: 365px; */
   height: 4px;
   background-color: salmon;
   position: absolute;
   top: 20px;
+  left: 95px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -550,6 +551,7 @@ nav {
 
   .strike-through{
     top: 15px;
+    left: 30px;
   }
 
   .text-container h1 {
@@ -683,11 +685,11 @@ nav {
 
 .squarecards {
   /* height: 85vh; */
-  height: 650px;
+  height: 750px;
   display: flex;
   margin-top: 100px;
   padding-top: 100px;
-  padding-bottom: 10px;
+  padding-bottom: 100px;
   padding-left: 150px;
   padding-right: 100px;
   box-sizing: border-box;
@@ -701,6 +703,8 @@ nav {
   justify-content: center;
   align-items: flex-start;
   z-index: -999;
+  padding-right: 30px;
+  box-sizing: border-box;
 }
 
 .minitext {
@@ -725,7 +729,7 @@ nav {
 }
 
 .cardarea {
-  width: 50%;
+  width: 610px;
 }
 
 .cardarea {
@@ -748,15 +752,14 @@ nav {
 
 .abs1 {
   width: 120px !important;
-  right: 50px;
   z-index: 2;
-  top: -30px;
+  top: 0;
 }
 
 .abs2 {
   width: 170px !important;
-  right: 430px;
-  top: 380px;
+  left: 0px;
+  bottom: 0;
 }
 
 .abs3 {
@@ -769,8 +772,9 @@ nav {
 .abs4 {
   width: 155px !important;
   top: -40px;
-  right: 450px;
+  left: 0;
   z-index: -1;
+  
 }
 
 @media only screen and (max-width: 400px) {
@@ -784,7 +788,7 @@ nav {
 
   .textarea {
     width: 100%;
-    /* background-color: red; */
+    padding: 0;
   }
 
   .textarea h2 {
@@ -803,7 +807,7 @@ nav {
 
   .abs1 {
     width: 80px !important;
-    right: 0px !important;
+    /* right: 0px !important; */
     z-index: 2;
     top: -20px;
   }
@@ -816,9 +820,10 @@ nav {
   
   .abs3 {
     width: 90px !important;
-    right: 0px !important;
+    /* right: 0px !important; */
     top: 250px;
     z-index: -1;
+
   }
   
   .abs4 {
@@ -826,6 +831,7 @@ nav {
     top: -20px;
     right: 220px !important;
     z-index: -1;
+
   }
   
 }
