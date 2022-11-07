@@ -39,24 +39,27 @@ export default function App() {
   );
 }
 
-// import client from "../lib/apoloclient"
-// import {gql} from "@apollo/client"
 
-// export async function getStaticProps() {
-//   const { data } = await client.query({
-//     query: gql`
-//     {
-//       books(limit:5){
-//         name
-//       }
-//     }
-//     `,
-//   });
 
-//   return {
-//     props: {
-//       data: data
-//     },
-//  };
-// }
+import client from "../lib/apoloclient"
+import {gql} from "@apollo/client"
+
+export async function getServerSideProps() {
+  const { data } = await client.query({
+    query: gql`
+    {
+      images(limit:7){
+        url
+      }
+    }
+    `,
+    
+  });
+
+  return {
+    props: {
+      images: data
+    },
+ };
+}
 

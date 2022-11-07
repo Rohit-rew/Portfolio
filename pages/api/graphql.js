@@ -66,6 +66,15 @@ const AuthorType = new GraphQLObjectType({
   },
 });
 
+const ImageType = new GraphQLObjectType({
+  name:"image",
+  fields:()=>{
+    return {
+      url : {type:GraphQLString}
+    }
+  }
+})
+
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
@@ -103,6 +112,21 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(AuthorType),
       resolve(parent , args){
         return author
+      }
+    },
+    images : {
+      type : new GraphQLList(ImageType),
+      args : {limit : {type : GraphQLInt}},
+      async resolve(parent,args){
+
+        const client = await connectPromise
+        const db = client.db("portfolio")
+        const images = await db.collection("images")
+        .find({})
+        .limit(args.limit)
+        .toArray()
+        return images
+
       }
     }
   },
