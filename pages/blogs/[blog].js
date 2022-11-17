@@ -1,40 +1,35 @@
-import Router from "next/router";
-import { useRouter } from "next/router";
-import React, { useRef } from "react";
+import React from "react";
 import blogpage from "./blogpage.module.css";
+import { getDoc , doc, getFirestore } from "firebase/firestore";
 
-export async function getServerSideProps() {
-
-  const books = await fetch("http://localhost:3000/api/getblogs")
-    .then((res) => res.json())
-    .then((data) => data);
+export async function getServerSideProps(context) {
+  const {blog} = context.query
+  const docref = doc(getFirestore(),"blogs" , blog);
+  const snapshot = getDoc(docref);
+  const blogdata = (await snapshot).data()
 
   return {
-    props: {
-      books,
-    },
-  };
+    props : {
+      blogdata
+    }
+  }
 }
 
-export default function Blog({ books }) {
+export default function Blog({blogdata}) {
 
-  
+  console.log(blogdata)
   React.useEffect(() => {
     const descriptionarea = document.getElementById("descriptionarea");
-    descriptionarea.innerHTML = books.data[0].descriptionHTML;
+    descriptionarea.innerHTML = blogdata.descriptionHTML;
   });
-
-  // the below query contains the id in url
-  const { query } = useRouter();
-  // console.log(query.blog);
 
   return (
     <div className={blogpage.container}>
       <div className={blogpage.area}>
-        <h1>{books.data[0].title}</h1>
+        <h1>{blogdata.title}</h1>
 
         <div className={blogpage.mainimagecontainer}>
-          <img className={blogpage.mainimage} src={books.data[0].mainimage} />
+          <img className={blogpage.mainimage} src={blogdata.mainimage} />
         </div>
 
         <div id="descriptionarea" className={blogpage.descriptionarea}>

@@ -1,5 +1,6 @@
-import Link from "next/link";
+
 import React, { Fragment } from "react";
+import { getBlogs } from "../../lib/serversideprops/firebaseinit";
 import styles from "../admin/admin.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -8,9 +9,11 @@ import Editwindow from "../../component/admin/BlogEditwindow";
 import NewWindow from "../../component/admin/BlogNewWindow";
 
 export async function getServerSideProps() {
-  const blogs = await fetch("http://localhost:3000/api/getblogs")
-    .then((res) => res.json())
-    .then((data) => data);
+  let blogs = []
+  const snapshot = await getBlogs;
+  const data = snapshot.docs.forEach(doc=>{
+    blogs.push({...doc.data() , id : doc.id})
+  })
 
   return {
     props: {
@@ -45,7 +48,7 @@ export default function Blogs({ blogs }) {
     });
   };
 
-  const blogjsx = blogs.data.map((blog , i) => {
+  const blogjsx = blogs.map((blog , i) => {
     return (
       <Fragment key={i}>
         <div className={styles.griditems}>
