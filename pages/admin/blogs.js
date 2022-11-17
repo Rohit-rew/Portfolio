@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { Fragment } from "react";
 import styles from "../admin/admin.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -45,9 +45,9 @@ export default function Blogs({ blogs }) {
     });
   };
 
-  const blogjsx = blogs.data.map((blog) => {
+  const blogjsx = blogs.data.map((blog , i) => {
     return (
-      <>
+      <Fragment key={i}>
         <div className={styles.griditems}>
           <div className={styles.blog}></div>
 
@@ -70,14 +70,14 @@ export default function Blogs({ blogs }) {
 
               <p>
                 Categories :{" "}
-                {blog.categories.map((category) => {
-                  return <>{category},</>;
+                {blog.categories.map((category , i) => {
+                  return <Fragment key={i}>{category},</Fragment>;
                 })}
               </p>
             </div>
           </div>
         </div>
-      </>
+        </Fragment>
     );
   });
 

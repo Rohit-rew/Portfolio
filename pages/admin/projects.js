@@ -11,28 +11,23 @@ export async function getServerSideProps() {
     .then((res) => res.json())
     .then((data) => data);
 
-// const projects = JSON.parse(JSON.stringify(data))
   return {
     props: {
-      projects
+      projects,
     },
   };
 }
 
-export default function Projects({projects}) {
+export default function Projects({ projects }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isNewWindow, setNewWindow] = React.useState(false);
   const [isEditMode, setEditMode] = React.useState(false);
 
-  console.log(projects)
+  const openDeleteModal = () => setIsOpen(true);
 
-  const openDeleteModal = () => {
-    setIsOpen(true);
-  };
-
-  const projectJSX = new Array(20).fill(0).map((project) => {
+  const projectJSX = new Array(20).fill(0).map((project, i) => {
     return (
-      <div className={styles.projectcontainer}>
+      <div key={i} className={styles.projectcontainer}>
         <img src="/banners/5.png" />
         <div className={styles.projectinfo}>
           <div className={styles.icons}>

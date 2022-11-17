@@ -24,7 +24,6 @@ export default React.memo(function Textshowcase() {
 
   return (
     <div className="textshowcase">
-
         <div className="text-container" ref={ref}>
           <motion.div 
           style={{width : `${scrollprogress*300}px` }}
@@ -35,12 +34,10 @@ export default React.memo(function Textshowcase() {
             style={{opacity : `${scrollprogress || 0}`}}
             >You need a high performing developer</motion.h1>
 
-
             <p className="p1">A Good developer can change the face of your company. A Good developer can change.</p>
 
             <p>A Good developer can change the face of your company .A Good developer can change the face of your company <span>A Good developer can change the face of your company</span>can change the face of your company can change the face of your company can change the face of your company. </p>
         </div>
-
     </div>
   )
 })
