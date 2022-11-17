@@ -1,17 +1,25 @@
 import { motion, useScroll } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
 
 export default React.memo(function Verticalcards() {
-  const { scrollY } = useScroll();
-  const [scroll, setscroll] = React.useState();
 
+  const ref = useRef(null)
+  const [scroll, setscroll] = React.useState();
+  const [scroppprogress, setscroppprogress] = React.useState();
+  const { scrollY , scrollYProgress } = useScroll({
+    target : ref,
+    offset: ["start end", "end start"]
+  });
+  
   React.useEffect(() => {
+
+    setscroppprogress(scrollYProgress.current)
     scrollY.onChange((val) => {
       setscroll(() => {
         return val > 3700 ? val - 3700 : 0;
       });
     });
-  }, [scrollY]);
+  }, [scroll]);
 
   return (
     <>
@@ -47,14 +55,15 @@ export default React.memo(function Verticalcards() {
 
         <div className="right-cardcontainer">
           <div
-            style={{ transform: `translateY(-${scroll / 3}px)` }}
+            // style={{ transform: `translateY(-${scroll / 3}px)` }}
+            style={{ transform: `translateY(-${scroppprogress*590}px)` }}
             className="moving-cards"
           >
             <img src="/banners/4.png" />
             <img src="/banners/5.png" />
           </div>
 
-          <div className="fixed-cards">
+          <div ref={ref} className="fixed-cards">
             <img src="/banners/1.png" />
             <img src="/banners/2.png" />
             <img src="/banners/3.png" />

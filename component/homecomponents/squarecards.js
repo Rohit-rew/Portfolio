@@ -40,19 +40,19 @@ export default function Squarecards() {
             className="cardmainimage" src="/squarecards/1.png" />
 
             <motion.img 
-            style={{right : `${Number(-100) + Number((scrollprogress*100))}px` }}
+            style={{right : `${-100 + (scrollprogress*100)}px` }}
             className="absolute abs1" src="/squarecards/2.png" />
 
             <motion.img 
-            style={{left : `${Number(-100) + Number((scrollprogress*100))}px` }}
+            style={{left : `${-100 + (scrollprogress*100)}px` }}
             className="absolute abs2" src="/squarecards/3.png" />
 
             <motion.img 
-            style={{right : `${Number(-100) + Number((scrollprogress*100))}px` }}
+            style={{right : `${-70 + (scrollprogress*100)}px` }}
             className="absolute abs3" src="/squarecards/4.png" />
 
             <motion.img 
-            style={{left : `${Number(-100) + Number((scrollprogress*100))}px` }}
+            style={{left : `${-100 + (scrollprogress*100)}px` }}
             className="absolute abs4" src="/squarecards/5.png" />
 
         </div>
