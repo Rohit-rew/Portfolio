@@ -16,11 +16,10 @@ export async function getServerSideProps() {
 }
 
 export default function Blogs({ blogs }) {
-  console.log(blogs.data);
 
-  const blogsjsx = blogs.data.map((blog) => {
+  const blogsjsx = blogs.data.map((blog , i) => {
     return (
-      <Link href={`/blogs/${blog.id}`}>
+      <Link href={`/blogs/${blog.id}`} key={i}>
       <div className={styles.blogscontainer}>
         <img src={blog.mainimage} />
         <h2>{blog.title}</h2>
@@ -32,7 +31,6 @@ export default function Blogs({ blogs }) {
   return (
     <>
       <div className={styles.blogcontainer}>{blogsjsx}</div>
-
       <Footer />
     </>
   );
