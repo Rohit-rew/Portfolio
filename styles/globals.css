@@ -1358,6 +1358,13 @@ footer {
   gap: 80px;
   justify-content: center;
   align-items: center;
+  transition: .2s;
+}
+
+.p-footer-nav p:hover{
+  cursor: pointer;
+  text-decoration: underline;
+  transition: .2s;
 }
 
 /* ----------------------------project footer ends */
