@@ -5,11 +5,15 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faFileEdit } from "@fortawesome/free-solid-svg-icons";
 import ProjectNewWindow from "../../component/admin/ProjectNewWindow";
 import ProjectEditWindow from "../../component/admin/ProjectEditWindow";
+import { getProjects } from "../../lib/serversideprops/firebaseinit";
 
 export async function getServerSideProps() {
-  const projects = await fetch("http://localhost:3000/api/getprojects")
-    .then((res) => res.json())
-    .then((data) => data);
+
+  const projects = [];
+  const snapshot = await getProjects
+  const res = snapshot.docs.forEach(doc=>{
+    projects.push({...doc.data() , id : doc.id})
+  })
 
   return {
     props: {
@@ -24,11 +28,11 @@ export default function Projects({ projects }) {
   const [isEditMode, setEditMode] = React.useState(false);
 
   const openDeleteModal = () => setIsOpen(true);
-
-  const projectJSX = new Array(20).fill(0).map((project, i) => {
+// console.log(projects)
+  const projectJSX = projects.map((project, i) => {
     return (
       <div key={i} className={styles.projectcontainer}>
-        <img src="/banners/5.png" />
+        <img src={project.mainimage} />
         <div className={styles.projectinfo}>
           <div className={styles.icons}>
             <FontAwesomeIcon
@@ -42,18 +46,10 @@ export default function Projects({ projects }) {
               onClick={() => setEditMode(true)}
             />
           </div>
-
-          <h2>Temperature controling formula</h2>
-
-          <p>
-            GitHub Link : <br /> https://www.github.com/rohit-rew/asd.gh
-          </p>
-          <p>
-            Live Link :<br /> https://www.github.com/rohit-rew/asd.gh
-          </p>
-          <p>
-            Display window :<br /> square cards
-          </p>
+          <h2>{(project.title).slice(0 , 25)}</h2>
+          <p>GitHub url : <br /> {project.githuburl}</p>
+          <p>Live Link :<br /> {project.livelink}</p>
+          <p>Display window :<br /> square cards</p>
         </div>
       </div>
     );
@@ -79,6 +75,8 @@ export default function Projects({ projects }) {
   );
 }
 
+
+// delete modal 
 function DeleteModal({ setIsOpen }) {
   const deleteconfirm = (id) => {
     console.log(`deleted project with id : id`);
