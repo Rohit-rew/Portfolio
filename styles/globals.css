@@ -1510,6 +1510,10 @@ footer {
   box-sizing: border-box;
 }
 
+.blog-display:hover{
+  cursor: pointer;
+}
+
 @media only screen and (max-width : 400px) {
 
   .blog-container{
@@ -1536,5 +1540,20 @@ footer {
   .mobile-reverse{
     flex-direction: column-reverse;
   }
+}
+
+
+.mainimageupload{
+  padding: 20px;
+  border: 1px solid black;
+  width: 15%;
+}
+
+input::-webkit-file-upload-button{
+  background-color: rgb(221, 102, 65);
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 0px;
+  color: white;
 }
 

@@ -1,0 +1,123 @@
+/* this css module only contains the classes for the particular blog page not for the blogs collection */
+
+.container {
+  width: 100vw;
+  background-color: rgb(245, 245, 245);
+  margin-top: 13vh;
+  padding: 20px 350px;
+  box-sizing: border-box;
+}
+
+.area {
+  width: 100%;
+  background-color: white;
+  padding: 45px 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.219);
+  border-radius: 3px;
+  /* border: 1px solid rgba(0, 0, 0, 0.425); */
+  display: flex;
+  flex-direction: column;
+}
+
+.area h1 {
+  text-align: center;
+  font-size: 50px;
+  line-height: 65px;
+}
+
+.mainimagecontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.mainimage {
+  width: 70%;
+  border-radius: 3px;
+  margin: 40px 0px;
+  box-sizing: border-box;
+  background-color: aqua;
+  justify-self: center;
+  align-self: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 20px 200px;
+  }
+
+  .mainimage {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .container {
+    padding: 0px 20px;
+  }
+}
+
+.descriptionarea {
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionarea p {
+  font-size: 22px;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  line-height: 35px;
+  text-align: justify;
+  font-weight: 400;
+}
+
+.descriptionarea h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.descriptionarea img {
+  border-radius: 5px;
+  align-self: center;
+  width: 50%;
+}
+
+/* ---------------------- */
+/* client blog page starts */
+
+.blogcontainer {
+  /* background-color: aqua; */
+  width: 100%;
+  min-height: 80vh;
+  margin-top: 13vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 40px;
+  box-sizing: border-box;
+  justify-self: center;
+  /* background-color: blue; */
+}
+
+
+.blogscontainer {
+  /* aspect-ratio: 16/9; */
+  height: 250px;
+  width: 330px;
+  /* background-color: aqua; */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.308);
+}
+
+.blogscontainer img {
+  aspect-ratio: 16/9;
+  width: 330px;
+}
+
+.blogscontainer h2{
+    padding: 4px;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+}
