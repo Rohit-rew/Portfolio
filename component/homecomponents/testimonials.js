@@ -7,10 +7,7 @@ export default function Testimonials() {
 
   const [image , setimage] = React.useState(1)
 
-  console.log(image)
-
   function nextpic(){
-    console.log('right')
     setimage(preval=>{
       
         return preval == 5 ? 1 : preval+1
@@ -18,7 +15,6 @@ export default function Testimonials() {
     }
     
     function prevpic(){
-    console.log('left')
     setimage(preval=>{
       return preval == 1 ? 5 : preval-1
     })

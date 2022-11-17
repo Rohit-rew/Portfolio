@@ -12,9 +12,7 @@ export default React.memo(function Textshowcase() {
   const [scroll , setscroll] = React.useState()
   const [scrollprogress , setscrollprogress] = React.useState('')
 
-
   React.useEffect(()=>{
-    console.log(scrollprogress)
     setscrollprogress(scrollYProgress.current)
 
     scrollY.onChange((val)=>{
@@ -34,7 +32,7 @@ export default React.memo(function Textshowcase() {
             <h1 className="striked">You need a developer</h1>
 
             <motion.h1
-            style={{opacity : `${scrollprogress}`}}
+            style={{opacity : `${scrollprogress || 0}`}}
             >You need a high performing developer</motion.h1>
 
 

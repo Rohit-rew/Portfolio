@@ -30,7 +30,7 @@ export default react.memo(function Displaypinboard(props) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.1 }}
           initial={{ y: 60, opacity: 0 }}
-          style={{ marginTop: 60 - scroll }}
+          style={{ marginTop: 60 - (scroll || 0) }}
           src={props.images.images[1].url}
           className="pinboard tablet-start "
           width={"240px"}
@@ -40,7 +40,7 @@ export default react.memo(function Displaypinboard(props) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           initial={{ y: 60, opacity: 0 }}
-          style={{ marginTop: 120 - scroll * 2 }}
+          style={{ marginTop: 120 - ((scroll || 0) * 2) }}
           src={props.images.images[2].url}
           className="pinboard mar-60xx "
         ></motion.img>
@@ -49,7 +49,7 @@ export default react.memo(function Displaypinboard(props) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
           initial={{ y: 60, opacity: 0 }}
-          style={{ marginTop: 180 - scroll * 3 }}
+          style={{ marginTop: 180 - ((scroll || 0) * 3) }}
           src={props.images.images[3].url}
           className="pinboard mar-60xxx "
         ></motion.img>
@@ -58,7 +58,7 @@ export default react.memo(function Displaypinboard(props) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           initial={{ y: 60, opacity: 0 }}
-          style={{ marginTop: 120 - scroll * 2 }}
+          style={{ marginTop: 120 - ((scroll || 0) * 2) }}
           src={props.images.images[4].url}
           className="pinboard mar-60xx "
         ></motion.img>
@@ -67,7 +67,7 @@ export default react.memo(function Displaypinboard(props) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.1 }}
           initial={{ y: 60, opacity: 0 }}
-          style={{ marginTop: 60 - scroll }}
+          style={{ marginTop: 60 - (scroll || 0) }}
           src={props.images.images[5].url}
           className="pinboard  "
         ></motion.img>

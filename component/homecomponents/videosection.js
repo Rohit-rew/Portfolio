@@ -24,7 +24,7 @@ export default function Videosection() {
         <div className="sub-container">
 
             <div className="videocontainer">
-                <video id="video" src="/video/1.mp4" autoPlay loop />
+                <video id="video" src="/video/1.mp4" autoPlay loop muted={true} playsInline={true} />
 
             </div>
 
