@@ -1,5 +1,6 @@
 import Footer from "../component/projectcomponents/footer";
 import { getProjects } from "../lib/serversideprops/firebaseinit";
+import ProjectCard from "../component/projectcomponents/projectCard";
 
 export async function getServerSideProps(){
   const projects = [];
@@ -26,7 +27,7 @@ export default function Projects({projects}) {
           <h1>Your brand image is in safe hands</h1>
           <p>
             As a web developer I convert your dream into reality using the
-            latest technologies
+            latest technologies.
           </p>
 
           <div className="buttoncouple">
@@ -38,18 +39,16 @@ export default function Projects({projects}) {
 
       <div className="projects-scroll">
         <div className="project-container">
-          <img src="https://ik.imagekit.io/ylyzsq6uc/1_JgKwkG2oS.png?ik-sdk-version=javascript-1.4.3&updatedAt=1668224591144" />
-          <img src="/banners/2.png" />
-          <img src="/banners/3.png" />
-          <img src="/banners/4.png" />
-          <img src="/banners/5.png" />
-          <img src="/banners/6.png" />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
+          <ProjectCard />
         </div>
       </div>
 
       <div className="text-scroll-layer">
-
-
         {/* //make the below line scroll horizontally */}
         <h1>
           WEB DEVELOPMENT CUSTOM WEBSITE INTERACTIVE RESPONSIVE FULLY CUSTOMISED

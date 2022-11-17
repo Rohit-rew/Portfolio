@@ -1,0 +1,74 @@
+/* all project related css will go here */
+
+/* Project card starts */
+
+.projectCard{
+    aspect-ratio: 1 / 1.4146187776;
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.247);
+    border-radius: 10px;
+}
+
+.projectCard img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.projectCard:hover{
+    cursor: pointer;
+}
+
+.bottomhovershow{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background-color: rgba(133, 133, 133, 0.562);
+    transition: .6s;
+    bottom: 0px;
+}
+
+.tophovershow{
+    width: 100%;
+    height: 50%;
+    background-color: rgba(133, 133, 133, 0.562);
+    position: absolute;
+    top: 0px;
+    transition: .6s;
+
+}
+
+.projectCard:hover .bottomhovershow{
+    bottom: -180px;
+    transition: .6s;
+}
+.projectCard:hover .tophovershow{
+    top: -180px;
+    transition: .6s;
+}
+
+
+.buttons{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    /* background-color: red; */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.buttons button{
+    width: 100px;
+    height: 20px;
+    padding: 15px 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(172, 172, 172);
+    border: 0px;
+    border-radius: 5px;
+}
