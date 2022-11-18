@@ -2,6 +2,7 @@
 
 .container {
   width: 100vw;
+  height: 100vh;
   background-color: rgb(245, 245, 245);
   margin-top: 13vh;
   padding: 20px 350px;
@@ -86,9 +87,7 @@
 /* client blog page starts */
 
 .blogcontainer {
-  /* background-color: aqua; */
   width: 100%;
-  min-height: 80vh;
   margin-top: 13vh;
   display: flex;
   flex-wrap: wrap;
@@ -98,15 +97,12 @@
   padding: 40px;
   box-sizing: border-box;
   justify-self: center;
-  /* background-color: blue; */
 }
 
 
 .blogscontainer {
-  /* aspect-ratio: 16/9; */
   height: 250px;
   width: 330px;
-  /* background-color: aqua; */
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.308);
 }
 
@@ -120,4 +116,10 @@
     box-sizing: border-box;
     font-size: 18px;
     text-align: center;
+}
+
+
+.blogpage footer{
+  position: fixed;
+  bottom: 0px;
 }

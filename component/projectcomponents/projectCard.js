@@ -7,11 +7,9 @@ export default function ProjectCard({ project }) {
       <div className={styles.tophovershow}></div>
 
       <div className={styles.buttons}>
-        {/* <Link href={project.githuburl} target="_blank" rel="noopener noreferrer"> */}
           <a href={project.githuburl} target="_blank">
             <p >Git Hub</p>
           </a>
-        {/* </Link> */}
 
         <a href={project.livelink} target="_blank">
           <p>Live Link</p>

@@ -2,41 +2,50 @@ import Footer from "../component/projectcomponents/footer";
 import { getProjects } from "../lib/serversideprops/firebaseinit";
 import ProjectCard from "../component/projectcomponents/projectCard";
 import { useScroll } from "framer-motion";
-import react from "react";
 import React from "react";
 
-export async function getServerSideProps(){
+import { ProjectContext } from "../lib/contextapi/projectfilter";
+
+export async function getServerSideProps() {
   const projects = [];
-  const snapshot = await getProjects
-  const res = snapshot.docs.forEach(doc=>{
-    projects.push({...doc.data() , id : doc.id})
-  })
+  const snapshot = await getProjects;
+  const res = snapshot.docs.forEach((doc) => {
+    projects.push({ ...doc.data(), id: doc.id });
+  });
 
   return {
-    props :{
-      projects
-    }
-  }
+    props: {
+      projects,
+    },
+  };
 }
 
-export default function Projects({projects}) {
+export default function Projects({ projects }) {
+  const { scrollY } = useScroll();
+  const [scroll, setScroll] = React.useState(0);
 
-  const {scrollY} = useScroll()
-  const [scroll , setScroll] = React.useState(0)
-
-  React.useState(()=>{
-    scrollY.onChange((val)=>{
-      console.log(val)
+  React.useState(() => {
+    scrollY.onChange((val) => {
+      console.log(val);
       setScroll(val);
-    })
-  },[scrollY])
+    });
+  }, [scrollY]);
 
-  const projectCard = projects.map((project , i)=>{
-    return (
-      <ProjectCard key={i}  project={project}/>
-    )
-  })
+  
+  const projectCard = projects.map((project, i) => {
+    return <ProjectCard key={i} project={project} />;
+  });
+  
+  const { filter } = React.useContext(ProjectContext);
+  const data = projects.filter((project, i) => {
+    if (filter == "all") return project;
+    else {
+      return project.technology[0].toLowerCase() == filter;
+    }
+  });
 
+
+  console.log(data)
   return (
     <main className="projects">
       <div className="text-static-layer">
@@ -56,16 +65,14 @@ export default function Projects({projects}) {
       </div>
 
       <div className="projects-scroll">
-        <div className="project-container">
-              {projectCard}
-        </div>
+        <div className="project-container">{projectCard}</div>
       </div>
 
       <div className="text-scroll-layer">
         {/* //make the below line scroll horizontally */}
-        <h1 style={{translate : `${scroll/2.5}px`}}>
-          WEB  DEVELOPMENT UNIQUE ELEGANT CUSTOM WEBSITE INTERACTIVE RESPONSIVE FULLY CODED CUSTOMISED
-          UNIQUE ELEGANT GRAPHICS{" "}
+        <h1 style={{ translate: `${scroll / 2.5}px` }}>
+          WEB DEVELOPMENT UNIQUE ELEGANT CUSTOM WEBSITE INTERACTIVE RESPONSIVE
+          FULLY CODED CUSTOMISED UNIQUE ELEGANT GRAPHICS{" "}
         </h1>
       </div>
 

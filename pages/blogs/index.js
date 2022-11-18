@@ -4,11 +4,11 @@ import styles from "./blogpage.module.css";
 import { getBlogs } from "../../lib/serversideprops/firebaseinit";
 
 export async function getServerSideProps() {
-  let blogs = []
+  let blogs = [];
   const snapshot = await getBlogs;
-  const data = snapshot.docs.forEach(doc=>{
-    blogs.push({...doc.data() , id : doc.id})
-  })
+  const data = snapshot.docs.forEach((doc) => {
+    blogs.push({ ...doc.data(), id: doc.id });
+  });
 
   return {
     props: {
@@ -18,22 +18,21 @@ export async function getServerSideProps() {
 }
 
 export default function Blogs({ blogs }) {
-
-  const blogsjsx = blogs.map((blog , i) => {
+  const blogsjsx = blogs.map((blog, i) => {
     return (
       <Link href={`/blogs/${blog.id}`} key={i}>
-      <div className={styles.blogscontainer}>
-        <img src={blog.mainimage} />
-        <h2>{blog.title}</h2>
-      </div>
+        <div className={styles.blogscontainer}>
+          <img src={blog.mainimage} />
+          <h2>{blog.title}</h2>
+        </div>
       </Link>
     );
   });
 
   return (
-    <>
+    <div className={styles.blogpage}>
       <div className={styles.blogcontainer}>{blogsjsx}</div>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -7,15 +7,18 @@ import { SessionProvider } from "next-auth/react";
 import Header from "../component/header";
 import Hamburger from "../component/hamburger";
 import { Context } from "../context";
+import ProjectFilterContext from "../lib/contextapi/projectfilter";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <SessionProvider session={pageProps.session}>
         <Context>
-          <Header />
-          <Hamburger />
+          <ProjectFilterContext>
+            <Header />
+            <Hamburger />
           <Component {...pageProps} />
+          </ProjectFilterContext>
         </Context>
       </SessionProvider>
     </>

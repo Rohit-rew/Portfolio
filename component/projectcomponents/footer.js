@@ -1,16 +1,28 @@
+import { ProjectContext } from "../../lib/contextapi/projectfilter";
+import React from "react";
 
 export default function Footer() {
+  const { clickhandler, filter } = React.useContext(ProjectContext);
+
+  const techarray = ["Css" , "Javascript" , "Nodejs" , "React" , "Redux" , "All"]
+
+  const buttons = techarray.map(item=>{
+      return(
+        <button
+          style={{ color: `${filter == item.toLowerCase() ? "orange" : "white"}` }}
+          onClick={(e) => clickhandler(item)}
+        >
+          {item}
+        </button>
+
+      )
+  })
+
   return (
     <div className="project-footer">
-
-        <div className="p-footer-nav">
-            <p>Css</p>
-            <p>Javascript</p>
-            <p>React</p>
-            <p>Redux</p>
-            <p>Nodejs</p>
-        </div>
-        
+      <div className="p-footer-nav">
+        {buttons}
+      </div>
     </div>
-  )
+  );
 }

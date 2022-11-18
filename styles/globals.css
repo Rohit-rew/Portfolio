@@ -1342,7 +1342,14 @@ footer {
   transition: 0.2s;
 }
 
-.p-footer-nav p:hover {
+.p-footer-nav button{
+  background-color: transparent;
+  border: 0px; 
+  color: white;
+  font-size: 18px;
+}
+
+.p-footer-nav button:hover {
   cursor: pointer;
   text-decoration: underline;
   transition: 0.2s;
