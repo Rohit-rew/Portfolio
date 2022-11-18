@@ -31,7 +31,27 @@ export default function Blogs({ blogs }) {
 
   return (
     <div className={styles.blogpage}>
-      <div className={styles.blogcontainer}>{blogsjsx}</div>
+      <div className={styles.blogcontainer}>
+        <div className={styles.blogArea}>
+          {blogsjsx}
+        </div>
+
+        <div className={`static-text-area ${styles.tempcolor}`}>
+          <p className="minitext">BRANDING</p>
+          <h1>Contribute your knowledge by <br/>writing blogs</h1>
+          <p>
+            Subscribe to my blogs channel and get read the blogs on latest tech topics
+            <br/>
+            <br/>
+            Click the button below to subscribe.
+          </p>
+
+          <div className="buttoncouple">
+            <button className="contact-me">Subscribe</button>
+            <button className="follow-me">Follow me</button>
+          </div>
+        </div>
+      </div>
       <Footer />
     </div>
   );

@@ -26,16 +26,14 @@ export default function Projects({ projects }) {
 
   React.useState(() => {
     scrollY.onChange((val) => {
-      console.log(val);
       setScroll(val);
     });
   }, [scrollY]);
 
-  
   const projectCard = projects.map((project, i) => {
     return <ProjectCard key={i} project={project} />;
   });
-  
+
   const { filter } = React.useContext(ProjectContext);
   const data = projects.filter((project, i) => {
     if (filter == "all") return project;
@@ -44,8 +42,7 @@ export default function Projects({ projects }) {
     }
   });
 
-
-  console.log(data)
+  console.log(data);
   return (
     <main className="projects">
       <div className="text-static-layer">
@@ -69,7 +66,6 @@ export default function Projects({ projects }) {
       </div>
 
       <div className="text-scroll-layer">
-        {/* //make the below line scroll horizontally */}
         <h1 style={{ translate: `${scroll / 2.5}px` }}>
           WEB DEVELOPMENT UNIQUE ELEGANT CUSTOM WEBSITE INTERACTIVE RESPONSIVE
           FULLY CODED CUSTOMISED UNIQUE ELEGANT GRAPHICS{" "}

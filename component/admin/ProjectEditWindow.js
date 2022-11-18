@@ -57,7 +57,7 @@ export default function ProjectEditWindow({closeWindow}) {
             <label htmlFor="technology">Technology Focus :</label>
             <input id="technology" type={"text"} />
             <button type="submit" className={styles.addproject}>
-              + Add Project
+              Update
             </button>
           </form>
         </div>
