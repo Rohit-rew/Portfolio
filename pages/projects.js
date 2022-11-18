@@ -1,6 +1,9 @@
 import Footer from "../component/projectcomponents/footer";
 import { getProjects } from "../lib/serversideprops/firebaseinit";
 import ProjectCard from "../component/projectcomponents/projectCard";
+import { useScroll } from "framer-motion";
+import react from "react";
+import React from "react";
 
 export async function getServerSideProps(){
   const projects = [];
@@ -17,7 +20,22 @@ export async function getServerSideProps(){
 }
 
 export default function Projects({projects}) {
-  console.log(projects)
+
+  const {scrollY} = useScroll()
+  const [scroll , setScroll] = React.useState(0)
+
+  React.useState(()=>{
+    scrollY.onChange((val)=>{
+      console.log(val)
+      setScroll(val);
+    })
+  },[scrollY])
+
+  const projectCard = projects.map((project , i)=>{
+    return (
+      <ProjectCard key={i}  project={project}/>
+    )
+  })
 
   return (
     <main className="projects">
@@ -39,19 +57,14 @@ export default function Projects({projects}) {
 
       <div className="projects-scroll">
         <div className="project-container">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+              {projectCard}
         </div>
       </div>
 
       <div className="text-scroll-layer">
         {/* //make the below line scroll horizontally */}
-        <h1>
-          WEB DEVELOPMENT CUSTOM WEBSITE INTERACTIVE RESPONSIVE FULLY CUSTOMISED
+        <h1 style={{translate : `${scroll/2.5}px`}}>
+          WEB  DEVELOPMENT UNIQUE ELEGANT CUSTOM WEBSITE INTERACTIVE RESPONSIVE FULLY CODED CUSTOMISED
           UNIQUE ELEGANT GRAPHICS{" "}
         </h1>
       </div>

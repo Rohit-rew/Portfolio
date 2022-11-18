@@ -1,15 +1,23 @@
 import styles from "../../styles/project.module.css";
+import Link from "next/link";
 
-export default function ProjectCard() {
+export default function ProjectCard({ project }) {
   return (
     <div className={styles.projectCard}>
       <div className={styles.tophovershow}></div>
 
       <div className={styles.buttons}>
-        <button>Git Hub</button>
-        <button>Visit Live</button>
+        {/* <Link href={project.githuburl} target="_blank" rel="noopener noreferrer"> */}
+          <a href={project.githuburl} target="_blank">
+            <p >Git Hub</p>
+          </a>
+        {/* </Link> */}
+
+        <a href={project.livelink} target="_blank">
+          <p>Live Link</p>
+        </a>
       </div>
-      <img src="https://ik.imagekit.io/ylyzsq6uc/7_WJjjbkkNW.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666823644395" />
+      <img src={project.mainimage} />
 
       <div className={styles.bottomhovershow}></div>
     </div>
