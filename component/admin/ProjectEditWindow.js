@@ -5,7 +5,7 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import {IKContext , IKUpload } from "imagekitio-react";
 
 
-export default function ProjectEditWindow({closeWindow}) {
+export default function ProjectEditWindow({closeWindow , project}) {
   const [image, setimage] = React.useState("");
 
 
@@ -18,10 +18,15 @@ export default function ProjectEditWindow({closeWindow}) {
     console.log(error);
   };
 
+  const updateProject = (e)=>{
+    e.preventDefault()
+    console.log(e.target.projectTitle.value)
+  }
+
   return (
     <div className={styles.backgroundblur}>
     <FontAwesomeIcon
-      onClick={() => closeWindow(false)}
+      onClick={() => closeWindow({isOpen : false , project : []})}
       className={styles.closeicon}
       icon={faClose}
     />
@@ -42,16 +47,16 @@ export default function ProjectEditWindow({closeWindow}) {
                 onSuccess={onSuccess}
               />
             </IKContext>
-            <img src={image} />
+            <img src={image || project.mainimage} />
           </div>
 
-          <form onSubmit={(e) => addProject(e)} className={styles.projectform}>
+          <form onSubmit={(e) => updateProject(e)} className={styles.projectform}>
             <label htmlFor="projectTitle">Project Name :</label>
-            <input id="projectTitle" type={"text"} />
+            <input id="projectTitle" type={"text"} defaultValue={project.title} />
             <label htmlFor="githubLink">Project Github Link :</label>
-            <input id="githubLink" type={"text"} />
+            <input id="githubLink" type={"text"} defaultValue={project.githuburl}/>
             <label htmlFor="liveLink">Project Live Link :</label>
-            <input id="liveLink" type={"text"} />
+            <input id="liveLink" type={"text"} defaultValue={project.livelink}/>
             <label htmlFor="displayWindows">Display Windows :</label>
             <input id="displayWindows" type={"text"} />
             <label htmlFor="technology">Technology Focus :</label>

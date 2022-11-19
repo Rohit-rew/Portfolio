@@ -5,7 +5,6 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 export default function Editor(props) {
 
   const[val,setval] = React.useState(props.value)
-  console.log(val)
   function sendData(data){
     setval(data)
     props.setDescriptionHTML(data)

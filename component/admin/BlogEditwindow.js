@@ -86,7 +86,7 @@ export default function EditWindow({ seteditwindow, editwindow }) {
 
           <label htmlFor="description">Description</label>
           <div className={styles.richtext}>
-            <Editor />
+            <Editor value={editwindow.blog.descriptionHTML} />
           </div>
 
           <label htmlFor="categories">Categories</label>

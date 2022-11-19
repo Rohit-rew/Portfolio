@@ -25,10 +25,9 @@ export async function getServerSideProps() {
 export default function Projects({ projects }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isNewWindow, setNewWindow] = React.useState(false);
-  const [isEditMode, setEditMode] = React.useState(false);
+  const [isEditMode, setEditMode] = React.useState({isOpen : false , project : []});
 
   const openDeleteModal = () => setIsOpen(true);
-// console.log(projects)
   const projectJSX = projects.map((project, i) => {
     return (
       <div key={i} className={styles.projectcontainer}>
@@ -43,7 +42,7 @@ export default function Projects({ projects }) {
             <FontAwesomeIcon
               className={styles.icon}
               icon={faFileEdit}
-              onClick={() => setEditMode(true)}
+              onClick={() => setEditMode({isOpen : true , project})}
             />
           </div>
           <h2>{(project.title).slice(0 , 25)}</h2>
@@ -59,7 +58,7 @@ export default function Projects({ projects }) {
     <>
       {isOpen && <DeleteModal setIsOpen={setIsOpen} />}
       {isNewWindow && <ProjectNewWindow closeWindow={setNewWindow} />}
-      {isEditMode && <ProjectEditWindow closeWindow={setEditMode} />}
+      {isEditMode.isOpen && <ProjectEditWindow closeWindow={setEditMode} project={isEditMode.project} />}
       <div className={styles.projectpage}>
         <div className={styles.projectarea}>
           {projectJSX}
