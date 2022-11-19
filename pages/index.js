@@ -19,9 +19,7 @@ export default function App(props) {
     <main className="home">
       <Slider />
 
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Displaypinboard images={props.images} />
-      </Suspense>
+        <Displaypinboard  />
 
       <div className="mobile-reverse">
         <Textshowcase />
@@ -40,23 +38,6 @@ export default function App(props) {
   );
 }
 
-import client from "../lib/apoloclient";
-import { gql } from "@apollo/client";
 
-export async function getServerSideProps() {
-  const { data } = await client.query({
-    query: gql`
-      {
-        images(limit: 7) {
-          url
-        }
-      }
-    `,
-  });
 
-  return {
-    props: {
-      images: data,
-    },
-  };
-}
+
