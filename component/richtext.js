@@ -4,21 +4,21 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export default function Editor(props) {
 
-  const[val,setval] = React.useState(props.value)
-  function sendData(data){
-    setval(data)
-    props.setDescriptionHTML(data)
-  }
+  const [val , setval] = React.useState("")
+
+
   return (
     <CKEditor
+      // ref={ref}
       name="description"
-      data={val}
+      data={"hello there "}
       editor={ClassicEditor}
       onChange={(event, editor) => {
         
         const data = editor.getData();
-        sendData(data)
+        setval(data)
       }}
     />
   )
 }
+ 

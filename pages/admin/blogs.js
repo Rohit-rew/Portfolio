@@ -52,7 +52,9 @@ export default function Blogs({ blogs }) {
     return (
       <Fragment key={i}>
         <div className={styles.griditems}>
-          <div className={styles.blog}></div>
+          <div className={styles.blog}>
+            <img className={styles.mainimage} src={blog.mainimage}/>
+          </div>
 
           <div className={styles.blog}>
             <div className={styles.icons}>

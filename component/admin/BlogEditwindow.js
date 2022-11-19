@@ -6,7 +6,7 @@ import { IKContext, IKUpload } from "imagekitio-react";
 import dynamic from "next/dynamic";
 
 export default function EditWindow({ seteditwindow, editwindow }) {
-  const [descriptionHTML, setDescription] = React.useState("");
+  const [descriptionHTML, setDescription] = React.useState(editwindow.blog.descriptionHTML);
   const [title, setTitle] = React.useState(editwindow.blog.title || "");
   const [categories, setCategories] = React.useState(
     editwindow.blog.categories.toString() || ""
@@ -49,7 +49,7 @@ export default function EditWindow({ seteditwindow, editwindow }) {
   };
 
   const Editor = dynamic(() => import("../richtext"), { ssr: false });
-
+  
   return (
     <div className={styles.backgroundblur}>
       <FontAwesomeIcon
@@ -75,18 +75,22 @@ export default function EditWindow({ seteditwindow, editwindow }) {
             authenticationEndpoint="http://localhost:3000/api/uploadimage"
           >
             <label htmlFor="uploadsection">Change Main Image</label>
-            <IKUpload
-              className="mainimageupload"
-              id="uploadsection"
-              fileName="code2.png"
-              onError={onError}
-              onSuccess={onSuccess}
-            />
+
+            <div className={styles.imageholder}>
+              <img src={mainimageurl || editwindow.blog.mainimage}/>
+              <IKUpload
+                className={styles.mainimageupload}
+                id="uploadsection"
+                fileName="code2.png"
+                onError={onError}
+                onSuccess={onSuccess}
+                />
+            </div>
           </IKContext>
 
           <label htmlFor="description">Description</label>
           <div className={styles.richtext}>
-            <Editor value={editwindow.blog.descriptionHTML} />
+            <Editor value={descriptionHTML} setDescription={setDescription}  />
           </div>
 
           <label htmlFor="categories">Categories</label>
