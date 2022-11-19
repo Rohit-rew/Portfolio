@@ -15,14 +15,12 @@ import Testimonials from "../component/homecomponents/testimonials";
 import Faq from "../component/homecomponents/faq";
 
 export default function App(props) {
-
-
   return (
     <main className="home">
       <Slider />
 
       <Suspense fallback={<h1>Loading...</h1>}>
-      <Displaypinboard images={props.images} />
+        <Displaypinboard images={props.images} />
       </Suspense>
 
       <div className="mobile-reverse">
@@ -42,27 +40,23 @@ export default function App(props) {
   );
 }
 
-
-
-import client from "../lib/apoloclient"
-import {gql} from "@apollo/client"
+import client from "../lib/apoloclient";
+import { gql } from "@apollo/client";
 
 export async function getServerSideProps() {
   const { data } = await client.query({
     query: gql`
-    {
-      images(limit:7){
-        url
+      {
+        images(limit: 7) {
+          url
+        }
       }
-    }
     `,
-    
   });
 
   return {
     props: {
-      images: data
+      images: data,
     },
- };
+  };
 }
-
