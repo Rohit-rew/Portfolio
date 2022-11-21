@@ -23,7 +23,6 @@ export default function (req, res) {
   const collref = collection(db, "blogs");
 
   if (req.method == "POST") {
-    console.log(req.body);
     const { title, descriptionHTML, mainimage, categories } = req.body;
 
     addDoc(collref, {

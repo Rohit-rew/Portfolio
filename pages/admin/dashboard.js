@@ -9,7 +9,6 @@ export default function Admin() {
   const [islogged, setislogged] = React.useState(true);
 
   const data = useSession();
-  console.log(data.status);
 
   React.useEffect(() => {
     if (data.status == "unauthenticated") {

@@ -70,9 +70,9 @@ export default function EditWindow({ seteditwindow, editwindow }) {
           />
 
           <IKContext
-            publicKey="public_AHmlYI8eWoxqSutDX1YvCCGNX2k="
+            publicKey={process.env.imagekitPublicKey}
             urlEndpoint="https://ik.imagekit.io/ylyzsq6uc"
-            authenticationEndpoint="http://localhost:3000/api/uploadimage"
+            authenticationEndpoint={process.env.imagekitPrivateKey}
           >
             <label htmlFor="uploadsection">Change Main Image</label>
 
