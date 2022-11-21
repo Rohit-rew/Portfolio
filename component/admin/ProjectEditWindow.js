@@ -10,7 +10,6 @@ export default function ProjectEditWindow({closeWindow , project}) {
 
 
   const onSuccess = (success) => {
-    console.log(success)
     setimage(success.url);
   };
 

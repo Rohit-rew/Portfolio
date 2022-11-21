@@ -6,13 +6,13 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBHXqwvVGgE-ppN8Kcx-CZrc1lLbGxpKko",
-  authDomain: "portfolio-eb4db.firebaseapp.com",
-  projectId: "portfolio-eb4db",
-  storageBucket: "portfolio-eb4db.appspot.com",
-  messagingSenderId: "351076912783",
-  appId: "1:351076912783:web:0e28f1917bfdaada85aafa",
-  measurementId: "G-7YJHZMPVKG",
+  apiKey: process.env.apiKey,
+  authDomain: process.send.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
+  measurementId: process.env.measurementId,
 };
 
 // Initialize Firebase
@@ -23,7 +23,6 @@ export default function (req, res) {
   const collref = collection(db, "blogs");
 
   if (req.method == "POST") {
-    console.log(req.body);
     const { title, descriptionHTML, mainimage, categories } = req.body;
 
     addDoc(collref, {

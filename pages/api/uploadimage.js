@@ -2,8 +2,8 @@ import ImageKit from "imagekit";
 
 export const imagekit = new ImageKit({
     urlEndpoint: "https://ik.imagekit.io/ylyzsq6uc",
-    publicKey: "public_AHmlYI8eWoxqSutDX1YvCCGNX2k=",
-    privateKey: "private_ZYfsN95uyGp3Ue1tPG7d1iKq9dI=",
+    publicKey: process.env.imagekitPublicKey,
+    privateKey: process.env.imagekitPrivateKey,
 })
 
 export default function(req,res){

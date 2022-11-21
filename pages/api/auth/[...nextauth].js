@@ -19,7 +19,6 @@ export const authOptions = {
           return null;
         } else if (user) {
           if (email == user[0].email && password == user[0].password) {
-            console.log(user);
             return user;
           } else if (password !== user.password) {
             throw new Error("password do not match");
