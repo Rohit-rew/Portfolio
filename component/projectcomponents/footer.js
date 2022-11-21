@@ -6,9 +6,10 @@ export default function Footer() {
 
   const techarray = ["Css" , "Javascript" , "Nodejs" , "React" , "Redux" , "All"]
 
-  const buttons = techarray.map(item=>{
+  const buttons = techarray.map((item , i)=>{
       return(
         <button
+        key={i}
           style={{ color: `${filter == item.toLowerCase() ? "orange" : "white"}` }}
           onClick={(e) => clickhandler(item)}
         >

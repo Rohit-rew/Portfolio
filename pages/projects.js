@@ -42,7 +42,6 @@ export default function Projects({ projects }) {
     }
   });
 
-  console.log(data);
   return (
     <main className="projects">
       <div className="text-static-layer">
