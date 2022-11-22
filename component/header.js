@@ -20,7 +20,9 @@ const data = react.useContext(Hamcontext)
 
     <header>
       <nav>
-        <div onClick={gohome} className="logo">LoGo</div>
+        <div onClick={gohome} className="logo">
+          <img className="logoimg" src="/logo.png" alt="logo" width={"60px"}/>
+        </div>
 
         <div className="items">
           <Link href={"/"}>
