@@ -9,18 +9,13 @@ export default function ProjectNewWindow({ closeWindow }) {
 
   const addProject = (e) => {
     e.preventDefault();
-    const title = e.target.projectTitle.value;
-    const githublink = e.target.githubLink.value;
-    const livelink = e.target.liveLink.value;
-    const displaywindow = e.target.displayWindows.value;
-    const technology = e.target.technology.value;
 
     const newProject = {
-      title,
-      githublink,
-      livelink,
-      displaywindow,
-      technology,
+      title :e.target.projectTitle.value,
+      githuburl : e.target.githubLink.value,
+      livelink :e.target.liveLink.value,
+      displaywindow :(e.target.displayWindows.value).split(","),
+      technology :(e.target.technology.value).split(","),
       mainimage: image,
     };
 

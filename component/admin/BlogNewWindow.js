@@ -26,7 +26,7 @@ export default function NewWindow({ setNewWindow }) {
       createDate,
       createTime,
     };
-
+    console.log(object)
     fetch("/api/postblogs", {
       method: "POST",
       headers: {
