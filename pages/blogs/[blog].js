@@ -17,7 +17,6 @@ export async function getServerSideProps(context) {
 
 export default function Blog({blogdata}) {
 
-  console.log(blogdata)
   React.useEffect(() => {
     const descriptionarea = document.getElementById("descriptionarea");
     descriptionarea.innerHTML = blogdata.descriptionHTML;

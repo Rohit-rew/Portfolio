@@ -17,7 +17,6 @@ export default function AdminLogin() {
 
     const status = JSON.parse(JSON.stringify(data));
 
-    console.log(status.ok);
     if (status.ok) {
       Router.replace("/admin/dashboard");
     } else [Router.replace("/admin")];
