@@ -486,3 +486,7 @@ project edit window starts */
 .mainimageupload{
     position: absolute;
 }
+
+.errorMsg{
+    color: red;
+}

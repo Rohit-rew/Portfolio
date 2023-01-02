@@ -2,11 +2,11 @@ import styles from "./admin.module.css";
 import React from "react";
 import Router from "next/router";
 import axios from "axios";
-import { FirebaseError } from "firebase/app";
 
 export default function AdminLogin() {
   const [email, setemail] = React.useState("");
   const [password, setpassword] = React.useState("");
+  const [error , setError] = React.useState(null)
 
   async function login(){
 
@@ -16,22 +16,31 @@ export default function AdminLogin() {
            email,
            password
          })
-         console.log(userCreds)
+         if(userCreds.status == 200){
+          Router.push("/admin/dashboard")
+         }
       } catch (error) {
-        if(error instanceof FirebaseError){
-          console.log("firebase error catched")
+        console.log(error)
+        if(error.response.status == 429){
+          setError(error.response.data)
+        }else if(error.response.status == 404){
+          setError(error.response.data)
         }
       }
-      setemail("")
       setpassword("")
     }
   }
 
   React.useEffect(()=>{
     console.log("reloads")
+
     async function getUser(){
       const user = await axios.get("/api/getuser")
+      if(user.status==200){
+        Router.push("/admin/dashboard")
+      }
     }
+
     getUser()
 
   } , [0])
@@ -39,6 +48,7 @@ export default function AdminLogin() {
   return (
     <div className={styles.loginpage}>
       <div className={styles.loginbox}>
+        {error && <p className={styles.errorMsg}>{error}</p>}
         <fieldset>
           <legend>Email</legend>
           <input
