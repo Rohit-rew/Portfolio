@@ -25,12 +25,15 @@ export async function getServerSideProps(context) {
 
 export default function Blog({blogdata}) {
 
-  if(!blogdata.title) return <Error statusCode={404}/>
+  
   
   React.useEffect(() => {
+    if(!blogdata.title) return
     const descriptionArea = document.getElementById("descriptionarea");
     descriptionArea.innerHTML = blogdata.descriptionHTML;
   });
+
+  if(!blogdata.title) return <Error statusCode={404}/>
 
   return (
     <div className={blogpage.container}>

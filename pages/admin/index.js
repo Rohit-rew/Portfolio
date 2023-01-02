@@ -1,25 +1,40 @@
 import styles from "./admin.module.css";
 import React from "react";
 import Router from "next/router";
-import { AuthService } from "../../lib/auth/firebase_authService";
+import axios from "axios";
+import { FirebaseError } from "firebase/app";
 
 export default function AdminLogin() {
   const [email, setemail] = React.useState("");
   const [password, setpassword] = React.useState("");
-  const loggedIn = false
 
-  function login(){
-    console.log("logging in")
+  async function login(){
+
+    if(email, password){
+      try {
+        const userCreds =  await axios.post("/api/login" , {
+           email,
+           password
+         })
+         console.log(userCreds)
+      } catch (error) {
+        if(error instanceof FirebaseError){
+          console.log("firebase error catched")
+        }
+      }
+      setemail("")
+      setpassword("")
+    }
   }
 
   React.useEffect(()=>{
-    if(loggedIn){
-      Router.push("/admin/dashboard")
+    console.log("reloads")
+    async function getUser(){
+      const user = await axios.get("/api/getuser")
     }
+    getUser()
 
-    const _authService = new AuthService()
-    _authService.currentUser()
-  })
+  } , [0])
 
   return (
     <div className={styles.loginpage}>
