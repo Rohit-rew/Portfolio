@@ -1,5 +1,5 @@
 // home page
-import React, { Suspense } from "react";
+import React from "react";
 import Slider from "../component/homecomponents/slider";
 import Displaypinboard from "../component/homecomponents/displaypinboard";
 import Textshowcase from "../component/homecomponents/textshowcase";

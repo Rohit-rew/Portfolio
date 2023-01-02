@@ -6,7 +6,7 @@ import { SessionProvider } from "next-auth/react";
 
 import Header from "../component/header";
 import Hamburger from "../component/hamburger";
-import { Context } from "../context";
+import { Context } from "../lib/contextapi/mobile_ham_toggler";
 import ProjectFilterContext from "../lib/contextapi/projectfilter";
 
 function MyApp({ Component, pageProps }) {

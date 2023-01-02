@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import react from "react";
-import { Hamcontext } from "../context";
+import { Hamcontext } from "../lib/contextapi/mobile_ham_toggler";
 export default function Header() {
 
 const data = react.useContext(Hamcontext)
