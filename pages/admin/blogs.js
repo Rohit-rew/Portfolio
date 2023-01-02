@@ -1,6 +1,6 @@
 
 import React, { Fragment } from "react";
-import { getBlogs } from "../../lib/firebase/firebaseinit";
+import { FirebaseService } from "../../lib/firebase/firebaseinit";
 import styles from "../admin/admin.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -9,12 +9,11 @@ import Editwindow from "../../component/admin/BlogEditwindow";
 import NewWindow from "../../component/admin/BlogNewWindow";
 
 export async function getServerSideProps() {
-  let blogs = []
-  const snapshot = await getBlogs;
-  const data = snapshot.docs.forEach(doc=>{
-    blogs.push({...doc.data() , id : doc.id})
-  })
 
+  const _firebaseService = new FirebaseService()
+  const blogs = await _firebaseService.getBlogs()
+
+  console.log(blogs)
   return {
     props: {
       blogs,
@@ -23,6 +22,7 @@ export async function getServerSideProps() {
 }
 
 export default function Blogs({ blogs }) {
+
   const [deleteModal, setIsOpen] = React.useState({ isopen: false, blog: "" });
   const [editwindow, seteditwindow] = React.useState({
     isopen: false,
@@ -30,7 +30,7 @@ export default function Blogs({ blogs }) {
   });
   const [newWindow, setNewWindow] = React.useState(false);
 
-  const opendeletedialog = (i) => {
+  const openDeleteDialog = (i) => {
     setIsOpen({
       isopen: true,
       id: i,
@@ -59,7 +59,7 @@ export default function Blogs({ blogs }) {
           <div className={styles.blog}>
             <div className={styles.icons}>
               <FontAwesomeIcon
-                onClick={() => opendeletedialog(blog.id)}
+                onClick={() => openDeleteDialog(blog.id)}
                 icon={faTrashCan}
               />
               <FontAwesomeIcon

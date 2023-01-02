@@ -1,17 +1,14 @@
 import Footer from "../component/projectcomponents/footer";
-import { getProjects } from "../lib/firebase/firebaseinit";
 import ProjectCard from "../component/projectcomponents/projectCard";
 import { useScroll } from "framer-motion";
 import React from "react";
-
 import { ProjectContext } from "../lib/contextapi/projectfilter";
+import { FirebaseService } from "../lib/firebase/firebaseinit";
 
 export async function getServerSideProps() {
-  const projects = [];
-  const snapshot = await getProjects;
-  const res = snapshot.docs.forEach((doc) => {
-    projects.push({ ...doc.data(), id: doc.id });
-  });
+
+  const _firebaseService =  new FirebaseService()
+  const projects = await _firebaseService.getProjects()
 
   return {
     props: {

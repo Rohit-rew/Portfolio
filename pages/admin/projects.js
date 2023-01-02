@@ -5,16 +5,12 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faFileEdit } from "@fortawesome/free-solid-svg-icons";
 import ProjectNewWindow from "../../component/admin/ProjectNewWindow";
 import ProjectEditWindow from "../../component/admin/ProjectEditWindow";
-import { getProjects } from "../../lib/firebase/firebaseinit";
+import { FirebaseService } from "../../lib/firebase/firebaseinit";
 
 export async function getServerSideProps() {
 
-  const projects = [];
-  const snapshot = await getProjects
-  const res = snapshot.docs.forEach(doc=>{
-    projects.push({...doc.data() , id : doc.id})
-  })
-
+  const _firebaseService =  new FirebaseService()
+  const projects = await _firebaseService.getProjects()
   return {
     props: {
       projects,

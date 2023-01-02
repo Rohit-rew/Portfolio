@@ -1,14 +1,12 @@
 import Footer from "../../component/footer";
 import Link from "next/link";
 import styles from "./blogpage.module.css";
-import { getBlogs } from "../../lib/firebase/firebaseinit";
+import { FirebaseService } from "../../lib/firebase/firebaseinit";
 
 export async function getServerSideProps() {
-  let blogs = [];
-  const snapshot = await getBlogs;
-  const data = snapshot.docs.forEach((doc) => {
-    blogs.push({ ...doc.data(), id: doc.id });
-  });
+
+  const _firebaseService = new FirebaseService()
+  const blogs = await _firebaseService.getBlogs()
 
   return {
     props: {
