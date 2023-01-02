@@ -1,7 +1,7 @@
 import Footer from "../../component/footer";
 import Link from "next/link";
 import styles from "./blogpage.module.css";
-import { getBlogs } from "../../lib/serversideprops/firebaseinit";
+import { getBlogs } from "../../lib/firebase/firebaseinit";
 
 export async function getServerSideProps() {
   let blogs = [];

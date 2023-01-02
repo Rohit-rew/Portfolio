@@ -18,8 +18,8 @@ export async function getServerSideProps(context) {
 export default function Blog({blogdata}) {
 
   React.useEffect(() => {
-    const descriptionarea = document.getElementById("descriptionarea");
-    descriptionarea.innerHTML = blogdata.descriptionHTML;
+    const descriptionArea = document.getElementById("descriptionarea");
+    descriptionArea.innerHTML = blogdata.descriptionHTML;
   });
 
   return (
