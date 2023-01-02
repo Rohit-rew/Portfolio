@@ -1,21 +1,10 @@
 import styles from "./admin.module.css";
 import Link from "next/link";
 import React from "react";
-import { useSession } from "next-auth/react";
 import Router from "next/router";
 
-export default function Admin() {
-  const [islogged, setislogged] = React.useState(true);
+export default function Dashboard() {
 
-  const data = useSession();
-
-  React.useEffect(() => {
-    if (data.status == "unauthenticated") {
-      Router.replace("/admin");
-    }
-  });
-
-  if (data.status == "authenticated") {
     return (
      
         <div className={styles.container}>
@@ -28,5 +17,5 @@ export default function Admin() {
           </Link>
         </div>
     );
-  }
+  
 }
