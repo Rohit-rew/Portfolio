@@ -3,7 +3,7 @@ import ProjectCard from "../component/projectcomponents/projectCard";
 import { useScroll } from "framer-motion";
 import React from "react";
 import { ProjectContext } from "../lib/contextapi/projectfilter";
-import { FirebaseService } from "../lib/firebase/firebaseinit";
+import { FirebaseService } from "../lib/firebase/firebase_firestore";
 
 export async function getServerSideProps() {
 

@@ -1,12 +1,20 @@
 import React from "react";
 import blogpage from "./blogpage.module.css";
-import { getDoc , doc, getFirestore } from "firebase/firestore";
+import { FirebaseService } from "../../lib/firebase/firebase_firestore";
+import Error from "next/error";
+
 
 export async function getServerSideProps(context) {
   const {blog} = context.query
-  const docref = doc(getFirestore(),"blogs" , blog);
-  const snapshot = getDoc(docref);
-  const blogdata = (await snapshot).data()
+  const _firestoreService = new FirebaseService()
+  let blogdata = {}
+  try {
+    blogdata = await _firestoreService.getOneBlog(blog)
+  } catch (error) {
+    console.log("error in serverside porps")
+    console.log(error)
+    blogdata = {}
+  }
 
   return {
     props : {
@@ -17,6 +25,8 @@ export async function getServerSideProps(context) {
 
 export default function Blog({blogdata}) {
 
+  if(!blogdata.title) return <Error statusCode={404}/>
+  
   React.useEffect(() => {
     const descriptionArea = document.getElementById("descriptionarea");
     descriptionArea.innerHTML = blogdata.descriptionHTML;

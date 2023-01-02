@@ -1,7 +1,7 @@
 import Footer from "../../component/footer";
 import Link from "next/link";
 import styles from "./blogpage.module.css";
-import { FirebaseService } from "../../lib/firebase/firebaseinit";
+import { FirebaseService } from "../../lib/firebase/firebase_firestore";
 
 export async function getServerSideProps() {
 

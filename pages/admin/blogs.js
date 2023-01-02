@@ -1,6 +1,6 @@
 
 import React, { Fragment } from "react";
-import { FirebaseService } from "../../lib/firebase/firebaseinit";
+import { FirebaseService } from "../../lib/firebase/firebase_firestore";
 import styles from "../admin/admin.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
