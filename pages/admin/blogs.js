@@ -1,6 +1,6 @@
 
 import React, { Fragment } from "react";
-import { getBlogs } from "../../lib/serversideprops/firebaseinit";
+import { getBlogs } from "../../lib/firebase/firebaseinit";
 import styles from "../admin/admin.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";

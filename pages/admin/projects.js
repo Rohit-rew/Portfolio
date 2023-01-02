@@ -5,7 +5,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faFileEdit } from "@fortawesome/free-solid-svg-icons";
 import ProjectNewWindow from "../../component/admin/ProjectNewWindow";
 import ProjectEditWindow from "../../component/admin/ProjectEditWindow";
-import { getProjects } from "../../lib/serversideprops/firebaseinit";
+import { getProjects } from "../../lib/firebase/firebaseinit";
 
 export async function getServerSideProps() {
 

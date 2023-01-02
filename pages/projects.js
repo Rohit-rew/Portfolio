@@ -1,5 +1,5 @@
 import Footer from "../component/projectcomponents/footer";
-import { getProjects } from "../lib/serversideprops/firebaseinit";
+import { getProjects } from "../lib/firebase/firebaseinit";
 import ProjectCard from "../component/projectcomponents/projectCard";
 import { useScroll } from "framer-motion";
 import React from "react";

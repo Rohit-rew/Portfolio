@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import { IKContext } from "imagekitio-react";
 
 export default function Admin() {
   const [islogged, setislogged] = React.useState(true);
