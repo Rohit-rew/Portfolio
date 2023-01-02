@@ -14,7 +14,7 @@ import Hireme from "../component/homecomponents/hireme";
 import Testimonials from "../component/homecomponents/testimonials";
 import Faq from "../component/homecomponents/faq";
 
-export default function App(props) {
+export default function App() {
   return (
     <main className="home">
       <Slider />

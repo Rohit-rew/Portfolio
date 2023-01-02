@@ -1,8 +1,6 @@
+
+
 export default function Latestprojects() {
-
-
-
-
 
   return (
     <div className="latestprojects">
